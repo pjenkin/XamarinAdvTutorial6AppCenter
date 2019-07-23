@@ -29,8 +29,8 @@ namespace Finance.ViewModel
 
             using (WebClient client = new WebClient())
             {
-                string xml = Encoding.Default.GetString(client.DownloadData("https://www.finzen.mx/blog-feed.xml"));
-                //string xml = Encoding.Default.GetString(client.DownloadData("https://www.nasa.gov/rss/dyn/educationnews.rss"));
+                //string xml = Encoding.Default.GetString(client.DownloadData("https://www.finzen.mx/blog-feed.xml"));
+                string xml = Encoding.Default.GetString(client.DownloadData("https://www.nasa.gov/rss/dyn/educationnews.rss"));
                 using (Stream reader = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {
                     Blog = (Posts)serializer.Deserialize(reader);
