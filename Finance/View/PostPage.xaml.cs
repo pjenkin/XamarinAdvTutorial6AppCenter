@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Finance.Model;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 
 namespace Finance.View
@@ -16,9 +17,23 @@ namespace Finance.View
         public PostPage(Item item)
         {
             InitializeComponent();
-            Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, true);
+            try
+            {
+                throw (new Exception("Unable to load RSS"));        // illustrate App Center tracking by throwing exception (inside try/catch)
+                Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, true);
 
-            webView.Source = item.ItemLink;
+                webView.Source = item.ItemLink;
+            }
+            catch (Exception ex)
+            {
+                var properties = new Dictionary<string, string>    // crash diagnostics dictionary string for key, string for value
+                {
+                    {"RSS_Post", $"{item.Title}" }                  // give further info - current item's title
+                };
+                // Crashes.TrackError(ex);                  // can track by exception only
+                Crashes.TrackError(ex, properties);       // dictionary (2nd) argument optional
+
+            }
         }
     }
 }
