@@ -18,7 +18,7 @@ namespace Finance
             MainPage = new NavigationPage(new MainPage());
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
             // Handle when your app starts
 
@@ -28,6 +28,13 @@ namespace Finance
             // UWP secret would be needed too
             AppCenter.Start($"android={androidAppSecret}; iOS={iOSAppSecret}", typeof(Crashes), typeof(Analytics));
             // Start with Crashes service started
+
+            bool didAppCrash = await Crashes.HasCrashedInLastSessionAsync();    // flag up any crash (must be async/await'd)
+
+            if (didAppCrash)
+            {
+                var crashReport = Crashes.GetLastSessionCrashReportAsync();     // if last time there was a crash - anyway, automatically logged to crash diagnostics in App Center
+            }
         }
 
         protected override void OnSleep()
