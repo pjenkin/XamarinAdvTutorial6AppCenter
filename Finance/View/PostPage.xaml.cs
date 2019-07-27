@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Finance.Model;
+using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 
@@ -20,9 +21,17 @@ namespace Finance.View
             try
             {
                 throw (new Exception("Unable to load RSS"));        // illustrate App Center tracking by throwing exception (inside try/catch)
-                Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, true);
+                //Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.SetUseSafeArea(this, true);
 
                 webView.Source = item.ItemLink;
+                var properties = new Dictionary<string, string>    // crash diagnostics dictionary string for key, string for value
+                {
+                    {"RSS_Post", $"{item.Title}" }                  // give further info - current item's title
+                };
+
+                // Analytics.TrackEvent("Blog_Post_Opened");   // can use 1 argument only
+                Analytics.TrackEvent("Blog_Post_Opened", properties);
+
             }
             catch (Exception ex)
             {
