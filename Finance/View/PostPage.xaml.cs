@@ -63,5 +63,6 @@ namespace Finance.View
                 // Crashes.TrackError(ex);                  // can track by exception only
                 Crashes.TrackError(exc, properties);       // dictionary (2nd) argument optional            }
             }
+        }
     }
 }
