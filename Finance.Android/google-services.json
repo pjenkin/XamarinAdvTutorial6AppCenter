@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "403253324014",
+    "firebase_url": "https://udemyxamadvappcenterfinancepnj.firebaseio.com",
+    "project_id": "udemyxamadvappcenterfinancepnj",
+    "storage_bucket": "udemyxamadvappcenterfinancepnj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403253324014:android:45f65a061251ada5",
+        "android_client_info": {
+          "package_name": "com.lalorosas.Finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403253324014-k31nqhbgdh1cr89b12jgcvd0n9jhbh6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB38AtxJ8WExefB5PgmMMJeWPCPmZvN27Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403253324014-k31nqhbgdh1cr89b12jgcvd0n9jhbh6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
